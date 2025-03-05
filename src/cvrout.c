@@ -67,7 +67,7 @@ void fprint_pla(FILE *fp, pPLA PLA, int output_type)
 	}
     }
 }
-
+
 void fpr_header(FILE *fp, pPLA PLA, int output_type)
 {
     register int i, var;
@@ -135,7 +135,7 @@ void fpr_header(FILE *fp, pPLA PLA, int output_type)
 	fprintf(fp, "\n");
     }
 }
-
+
 void pls_output(pPLA PLA)
 {
     register pcube last, p;
@@ -459,7 +459,7 @@ void kiss_print_cube(FILE *fp, pPLA PLA, pset p, char *out_string)
 
     putc('\n', fp);
 }
-
+
 void output_symbolic_constraints(FILE *fp, pPLA PLA, int output_symbolic)
 {
     pset_family A;
