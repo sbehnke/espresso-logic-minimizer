@@ -391,14 +391,15 @@ void makeup_labels(pPLA PLA)
 	for(i = 0; i < cube.part_size[var]; i++) {
 	    ind = cube.first_part[var] + i;
 	    if (PLA->label[ind] == (char *) NULL) {
-		PLA->label[ind] = ALLOC(char, 15);
+		const int bufferSize = 32;
+		PLA->label[ind] = ALLOC(char, bufferSize);
 		if (var < cube.num_binary_vars)
 		    if ((i % 2) == 0)
-			(void) sprintf(PLA->label[ind], "v%d.bar", var);
+			(void) snprintf(PLA->label[ind], bufferSize, "v%d.bar", var);
 		    else
-			(void) sprintf(PLA->label[ind], "v%d", var);
+			(void) snprintf(PLA->label[ind], bufferSize, "v%d", var);
 		else
-		    (void) sprintf(PLA->label[ind], "v%d.%d", var, i);
+		    (void) snprintf(PLA->label[ind], bufferSize, "v%d.%d", var, i);
 	    }
 	}
 }

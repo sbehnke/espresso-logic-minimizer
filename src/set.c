@@ -394,14 +394,15 @@ pset_family sf_read(FILE *fp)
     register pset p, last;
     pset_family A;
 
-    (void) fscanf(fp, "%d %d\n", &i, &j);
+    int res = fscanf(fp, "%d %d\n", &i, &j);
     A = sf_new(i, j);
     A->count = i;
     foreach_set(A, last, p) {
-	(void) fscanf(fp, "%x", p);
+	res = fscanf(fp, "%x", p);
 	for(j = 1; j <= LOOP(p); j++)
-	    (void) fscanf(fp, "%x", p+j);
+	    res = fscanf(fp, "%x", p+j);
     }
+    (void)res;
     return A;
 }
 
@@ -427,7 +428,8 @@ pset_family sf_bm_read(FILE *fp)
     register pset pdest;
     pset_family A;
 
-    (void) fscanf(fp, "%d %d\n", &rows, &cols);
+    int res = fscanf(fp, "%d %d\n", &rows, &cols);
+    (void)res;
     A = sf_new(rows, cols);
     for(i = 0; i < rows; i++) {
 	pdest = GETSET(A, A->count++);

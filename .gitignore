@@ -6,6 +6,7 @@ config.status
 src/Makefile
 src/espresso
 stamp-h
+autom4te.cache/
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,c++

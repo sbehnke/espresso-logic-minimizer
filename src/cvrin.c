@@ -80,7 +80,8 @@ void read_cube(register FILE *fp, pPLA PLA)
 
 	/* Read a symbolic multiple-valued variable */
 	if (cube.part_size[var] < 0) {
-	    (void) fscanf(fp, "%s", token);
+	    int res = fscanf(fp, "%s", token);
+		(void)res;
 	    if (equal(token, "-") || equal(token, "ANY")) {
 		if (kiss && var == cube.num_vars - 2) {
 		    /* leave it empty */
@@ -262,8 +263,10 @@ fatal("num_binary_vars (second field of .mv) cannot be negative");
 		}
 
 	    /* .p gives the number of product terms -- we ignore it */
-	    } else if (equal(word, "p"))
-		(void) fscanf(fp, "%d", &np);
+	    } else if (equal(word, "p")) {
+			int res = fscanf(fp, "%d", &np);
+			(void)res;
+		}
 	    /* .e and .end specify the end of the file */
 	    else if (equal(word, "e") || equal(word,"end"))
 		return;
